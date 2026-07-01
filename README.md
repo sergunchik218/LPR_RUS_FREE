@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/pipeline_banner.svg" alt="LPR RUS FREE Pipeline" width="800">
+  <img src="assets/банер1.jpg" alt="LPR RUS FREE Pipeline" width="100%">
 </p>
 
 Система работает в три этапа: **YOLO11n** находит автомобиль → **plate_detect_rus.pt** ищет номерную пластину → **CRNN-OCR** распознаёт текст с точностью 99.4%.
@@ -128,7 +128,7 @@ LPR_RUS_FREE/
 ├── checkpoints/
 │   └── best_model.pt          # CRNN-OCR: веса модели (21 MB)
 ├── assets/
-│   ├── pipeline_banner.svg   # Схема пайплайна
+│   ├── банер1.jpg             # Схема пайплайна
 │   └── training_plate_detector.png  # График обучения детектора
 └── README.md
 ```
