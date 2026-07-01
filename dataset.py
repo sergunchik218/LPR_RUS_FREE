@@ -9,7 +9,7 @@ ALPHABET = "ABEKMHOPCTYX0123456789"
 
 
 class PlateDataset(Dataset):
-    def __init__(self, root: str, split: str = "train", augment: bool = False, img_height: int = 32):
+    def __init__(self, root: str, split: str = "train", augment: bool = False, img_height: int = 32, balance: bool = False):
         self.root = Path(root) / split
         self.img_dir = self.root / "img"
         self.ann_dir = self.root / "ann"
@@ -21,6 +21,29 @@ class PlateDataset(Dataset):
             img_path = self.img_dir / (ann_path.stem + ".png")
             if img_path.exists():
                 self.samples.append((str(img_path), str(ann_path)))
+
+        if balance:
+            short_samples = []
+            long_samples = []
+            for s in self.samples:
+                with open(s[1], "r", encoding="utf-8") as f:
+                    text = json.load(f)["description"]
+                if len(text) <= 8:
+                    short_samples.append(s)
+                else:
+                    long_samples.append(s)
+            n_short = len(short_samples)
+            n_long = len(long_samples)
+            if n_short > n_long:
+                factor = n_short // n_long
+                remainder = n_short % n_long
+                long_samples = long_samples * factor + random.sample(long_samples, remainder)
+            elif n_long > n_short:
+                factor = n_long // n_short
+                remainder = n_long % n_short
+                short_samples = short_samples * factor + random.sample(short_samples, remainder)
+            self.samples = short_samples + long_samples
+            random.shuffle(self.samples)
 
         self.char_to_idx = {c: i for i, c in enumerate(ALPHABET)}
         self.blank_idx = len(ALPHABET)
