@@ -6,11 +6,15 @@ from detect import PlateRecognizer
 
 def main():
     parser = argparse.ArgumentParser(description="Распознавание номеров на видео")
-    parser.add_argument("video", type=str, help="Путь к видеофайлу")
+    parser.add_argument("video", type=str, nargs="?", help="Путь к видеофайлу")
     parser.add_argument("--ocr", type=str, default="checkpoints/best_model.pt")
     parser.add_argument("--interval", type=float, default=1.0, help="Интервал детекции (сек)")
     parser.add_argument("--output", type=str, default="", help="Сохранить результат в файл")
     args = parser.parse_args()
+
+    video_path = args.video
+    if not video_path:
+        video_path = input("Enter video path: ").strip().strip('"')
 
     recognizer = PlateRecognizer(
         car_model="yolo11n.pt",
@@ -19,14 +23,14 @@ def main():
         device="cuda" if __import__("torch").cuda.is_available() else "cpu",
     )
 
-    cap = cv2.VideoCapture(args.video)
+    cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
-        print(f"Error: cannot open {args.video}")
+        print(f"Error: cannot open {video_path}")
         return
 
     fps = cap.get(cv2.CAP_PROP_FPS)
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    print(f"Video: {args.video}")
+    print(f"Video: {video_path}")
     print(f"FPS: {fps:.1f}, Frames: {total_frames}, Duration: {total_frames/fps:.1f}s")
     print("SPACE = pause/resume  |  S = step frame  |  Q = quit\n")
 
