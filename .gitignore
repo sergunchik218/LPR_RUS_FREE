@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+autoriaNumberplateOcrRu-2021-09-01/
+autoriaNumberplateOptionsDataset-2021-09-03/
+runs/
+detection_data/
+lpr_etokone/
+*_result.*
