@@ -16,10 +16,6 @@
       <stop offset="0%" stop-color="#059669"/>
       <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
-    <linearGradient id="arrow" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#475569"/>
-      <stop offset="100%" stop-color="#64748b"/>
-    </linearGradient>
     <filter id="shadow">
       <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
     </filter>
@@ -30,28 +26,27 @@
   <!-- Title -->
   <text x="400" y="36" text-anchor="middle" fill="#f1f5f9" font-size="18" font-weight="bold">LPR RUS FREE — Pipeline</text>
 
-  <!-- Step 1: Car Detection -->
+  <!-- Step 1 -->
   <rect x="60" y="55" width="680" height="145" rx="10" fill="#1e293b" stroke="#2563eb" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="60" y="55" width="200" height="30" rx="10" fill="url(#step1)"/>
-  <rect x="60" y="75" width="200" height="10" fill="url(#step1)"/>
-  <text x="160" y="75" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">STEP 1: CAR DETECTION</text>
+  <rect x="60" y="55" width="220" height="30" rx="10" fill="url(#step1)"/>
+  <rect x="60" y="75" width="220" height="10" fill="url(#step1)"/>
+  <text x="170" y="75" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">STEP 1: CAR DETECTION</text>
 
   <rect x="420" y="95" width="290" height="85" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
   <text x="565" y="118" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="bold">YOLO11n (Ultralytics)</text>
-  <text x="565" y="138" text-anchor="middle" fill="#94a3b8" font-size="11">· 2.6M parameters · Pretrained on COCO</text>
-  <text x="565" y="155" text-anchor="middle" fill="#94a3b8" font-size="11">· Detects: car, bus, truck</text>
-  <text x="565" y="172" text-anchor="middle" fill="#94a3b8" font-size="11">· Confidence threshold: 0.35</text>
+  <text x="565" y="138" text-anchor="middle" fill="#94a3b8" font-size="11">· 2.6M params · Pretrained on COCO</text>
+  <text x="565" y="155" text-anchor="middle" fill="#94a3b8" font-size="11">· Classes: car, bus, truck</text>
+  <text x="565" y="172" text-anchor="middle" fill="#94a3b8" font-size="11">· Confidence: 0.35</text>
 
   <text x="90" y="120" fill="#e2e8f0" font-size="12">Input</text>
   <rect x="80" y="130" width="80" height="40" rx="6" fill="#334155"/>
   <text x="120" y="155" text-anchor="middle" fill="#f1f5f9" font-size="20">📸</text>
 
-  <!-- Arrow 1→2 -->
   <line x1="400" y1="200" x2="400" y2="235" stroke="#64748b" stroke-width="2"/>
   <polygon points="393,232 400,245 407,232" fill="#64748b"/>
   <text x="415" y="222" fill="#94a3b8" font-size="10">car crop</text>
 
-  <!-- Step 2: Plate Detection -->
+  <!-- Step 2 -->
   <rect x="60" y="245" width="680" height="145" rx="10" fill="#1e293b" stroke="#7c3aed" stroke-width="1.5" filter="url(#shadow)"/>
   <rect x="60" y="245" width="220" height="30" rx="10" fill="url(#step2)"/>
   <rect x="60" y="265" width="220" height="10" fill="url(#step2)"/>
@@ -59,39 +54,36 @@
 
   <rect x="420" y="285" width="290" height="85" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
   <text x="565" y="308" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="bold">plate_detect_rus.pt (YOLO11n)</text>
-  <text x="565" y="328" text-anchor="middle" fill="#94a3b8" font-size="11">· 2.6M parameters · 5.5 MB</text>
-  <text x="565" y="345" text-anchor="middle" fill="#94a3b8" font-size="11">· Trained on 1,490 Russian plates</text>
-  <text x="565" y="362" text-anchor="middle" fill="#94a3b8" font-size="11">· mAP50: 0.98 · Confidence: 0.35</text>
+  <text x="565" y="328" text-anchor="middle" fill="#94a3b8" font-size="11">· 2.6M params · 5.5 MB · mAP50: 0.98</text>
+  <text x="565" y="345" text-anchor="middle" fill="#94a3b8" font-size="11">· Trained on 1,490 Russian car photos</text>
+  <text x="565" y="362" text-anchor="middle" fill="#94a3b8" font-size="11">· Confidence: 0.35</text>
 
   <text x="90" y="310" fill="#e2e8f0" font-size="12">Car crop</text>
   <rect x="80" y="320" width="80" height="40" rx="6" fill="#334155"/>
   <text x="120" y="345" text-anchor="middle" fill="#f1f5f9" font-size="20">🚗</text>
 
-  <!-- Arrow 2→3 -->
   <line x1="400" y1="390" x2="400" y2="425" stroke="#64748b" stroke-width="2"/>
   <polygon points="393,422 400,435 407,422" fill="#64748b"/>
   <text x="415" y="412" fill="#94a3b8" font-size="10">plate crop</text>
 
-  <!-- Step 3: OCR -->
+  <!-- Step 3 -->
   <rect x="60" y="435" width="680" height="120" rx="10" fill="#1e293b" stroke="#059669" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="60" y="435" width="220" height="30" rx="10" fill="url(#step3)"/>
-  <rect x="60" y="455" width="220" height="10" fill="url(#step3)"/>
-  <text x="170" y="455" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">STEP 3: OCR RECOGNITION</text>
+  <rect x="60" y="435" width="230" height="30" rx="10" fill="url(#step3)"/>
+  <rect x="60" y="455" width="230" height="10" fill="url(#step3)"/>
+  <text x="175" y="455" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">STEP 3: OCR RECOGNITION</text>
 
   <rect x="420" y="475" width="290" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
   <text x="565" y="497" text-anchor="middle" fill="#6ee7b7" font-size="13" font-weight="bold">CRNN (CNN + BiLSTM + CTC)</text>
-  <text x="565" y="515" text-anchor="middle" fill="#94a3b8" font-size="11">· 1.75M parameters · 21 MB</text>
-  <text x="565" y="530" text-anchor="middle" fill="#94a3b8" font-size="11">· 99.4% accuracy · Alphabet: 22 chars</text>
+  <text x="565" y="515" text-anchor="middle" fill="#94a3b8" font-size="11">· 1.75M params · 21 MB · 99.4% accuracy</text>
+  <text x="565" y="530" text-anchor="middle" fill="#94a3b8" font-size="11">· Alphabet: ABEKMHOPCTYX + 0-9 (22 chars)</text>
 
   <text x="90" y="495" fill="#e2e8f0" font-size="12">Plate crop</text>
   <rect x="80" y="505" width="80" height="40" rx="6" fill="#334155"/>
   <text x="120" y="530" text-anchor="middle" fill="#f1f5f9" font-size="20">🔤</text>
 
-  <!-- Arrow 3→Result -->
   <line x1="400" y1="555" x2="400" y2="578" stroke="#64748b" stroke-width="2"/>
   <polygon points="393,575 400,588 407,575" fill="#64748b"/>
 
-  <!-- Result -->
   <rect x="310" y="588" width="180" height="28" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
   <text x="400" y="607" text-anchor="middle" fill="#10b981" font-size="13" font-weight="bold">A080AA163 · conf: 0.987</text>
 </svg>
