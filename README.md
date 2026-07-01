@@ -101,6 +101,16 @@ python test_image.py
 
 Откроется окно с обведённым номером, в консоли — текст и уверенность. Результат сохраняется как `photo_result.jpg`.
 
+### Распознавание на видео
+
+```bash
+python test_video.py video.mp4
+# или без аргумента — запросит путь интерактивно
+python test_video.py
+```
+
+Управление: `SPACE` — пауза/продолжить, `S` — покадрово (на паузе), `Q` — выход.
+
 ### Распознавание с RTSP-камеры
 
 ```bash
@@ -122,6 +132,7 @@ LPR_RUS_FREE/
 ├── train_plate_detector.py    # Скрипт обучения детектора пластин
 ├── convert_via_to_yolo.py     # Конвертер VIA → YOLO разметки
 ├── test_image.py              # Распознавание на фото
+├── test_video.py              # Распознавание на видео
 ├── test_camera.py             # Распознавание с камеры
 ├── requirements.txt           # Зависимости
 ├── plate_detect_rus.pt        # YOLO11n: детектор пластин (5.5 MB)
