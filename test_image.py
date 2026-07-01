@@ -7,6 +7,8 @@ from detect import PlateRecognizer
 def main():
     parser = argparse.ArgumentParser(description="License plate detection + recognition")
     parser.add_argument("image", type=str, nargs="?", help="Path to image")
+    parser.add_argument("--plate-model", type=str, default="plate_detect_rus.pt")
+    parser.add_argument("--car-model", type=str, default="yolo11n.pt")
     parser.add_argument("--ocr", type=str, default="checkpoints/best_model.pt")
     args = parser.parse_args()
 
@@ -15,10 +17,10 @@ def main():
         image_path = input("Enter image path: ").strip().strip('"')
 
     recognizer = PlateRecognizer(
-        car_model="yolov8n.pt",
-        plate_model="plate_detect.pt",
+        car_model=args.car_model,
+        plate_model=args.plate_model,
         ocr_path=args.ocr,
-        device="cpu",
+        device="cuda" if __import__("torch").cuda.is_available() else "cpu",
     )
 
     image = cv2.imread(image_path)

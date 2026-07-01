@@ -10,7 +10,7 @@ from dataset import ALPHABET
 
 
 class PlateRecognizer:
-    def __init__(self, car_model="yolov8n.pt", plate_model="plate_detect.pt",
+    def __init__(self, car_model="yolo11n.pt", plate_model="plate_detect_rus.pt",
                  ocr_path="checkpoints/best_model.pt", device="cpu"):
         self.device = torch.device(device)
 
