@@ -99,7 +99,6 @@ Input: кроп номера (H×W, grayscale)
 | Обработка изображений | OpenCV |
 | Язык | Python 3.10+ |
 | ОС | Windows / Linux |
-| GPU | не требуется (CPU) |
 
 ---
 
