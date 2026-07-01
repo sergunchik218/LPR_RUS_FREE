@@ -27,35 +27,9 @@
 
 ## 🧠 Архитектура CRNN-OCR
 
-```
-Input: кроп номера (H×W, grayscale)
-       │
-       ▼
-┌──────────────────┐
-│  Conv2d + BN +   │  H/2, W/2, 64ch
-│  ReLU + MaxPool  │
-├──────────────────┤
-│  Conv2d + BN +   │  H/4, W/4, 128ch
-│  ReLU + MaxPool  │
-├──────────────────┤
-│  Conv2d + BN +   │  H/4, W/4, 256ch
-│  ReLU            │
-├──────────────────┤
-│  Conv2d + BN +   │  H/4, W/4, 256ch
-│  ReLU            │
-├──────────────────┤
-│  AdaptiveAvgPool │  1, W/4, 256ch
-├──────────────────┤
-│  2×BiLSTM (256)  │  sequence encoder
-├──────────────────┤
-│  Linear → 23     │  character logits
-├──────────────────┤
-│  CTC Decoder     │  greedy decoding
-└──────────────────┘
-       │
-       ▼
-   "A080AA163"
-```
+<p align="center">
+  <img src="assets/crnn_architecture.svg" alt="Архитектура CRNN" width="400">
+</p>
 
 ---
 

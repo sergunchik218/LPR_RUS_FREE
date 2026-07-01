@@ -1,0 +1,67 @@
+<svg width="100%" viewBox="0 0 680 950" role="img" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#898781" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <line x1="340" y1="96" x2="340" y2="130" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="186" x2="340" y2="220" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="276" x2="340" y2="310" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="366" x2="340" y2="400" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="456" x2="340" y2="490" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="546" x2="340" y2="580" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="636" x2="340" y2="670" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="726" x2="340" y2="760" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+  <line x1="340" y1="816" x2="340" y2="850" marker-end="url(#arrow)" style="fill:none;stroke:#898781;stroke-width:1.5px"/>
+
+  <!-- Input -->
+  <g><rect x="190" y="40" width="300" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+    <text x="340" y="58" text-anchor="middle" fill="#444441" font-family="sans-serif" font-size="14" font-weight="500">Кроп номера</text>
+    <text x="340" y="76" text-anchor="middle" fill="#5F5E5A" font-family="sans-serif" font-size="12">H×W, grayscale</text></g>
+
+  <!-- Conv Block 1 -->
+  <g><rect x="190" y="130" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="340" y="148" text-anchor="middle" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Conv + BN + ReLU + pool</text>
+    <text x="340" y="166" text-anchor="middle" fill="#185FA5" font-family="sans-serif" font-size="12">H/2, W/2, 64 ch</text></g>
+
+  <!-- Conv Block 2 -->
+  <g><rect x="190" y="220" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="340" y="238" text-anchor="middle" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Conv + BN + ReLU + pool</text>
+    <text x="340" y="256" text-anchor="middle" fill="#185FA5" font-family="sans-serif" font-size="12">H/4, W/4, 128 ch</text></g>
+
+  <!-- Conv Block 3 -->
+  <g><rect x="190" y="310" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="340" y="328" text-anchor="middle" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Conv + BN + ReLU</text>
+    <text x="340" y="346" text-anchor="middle" fill="#185FA5" font-family="sans-serif" font-size="12">H/4, W/4, 256 ch</text></g>
+
+  <!-- Conv Block 4 -->
+  <g><rect x="190" y="400" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="340" y="418" text-anchor="middle" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Conv + BN + ReLU</text>
+    <text x="340" y="436" text-anchor="middle" fill="#185FA5" font-family="sans-serif" font-size="12">H/4, W/4, 256 ch</text></g>
+
+  <!-- AdaptiveAvgPool -->
+  <g><rect x="190" y="490" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="340" y="508" text-anchor="middle" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">AdaptiveAvgPool</text>
+    <text x="340" y="526" text-anchor="middle" fill="#185FA5" font-family="sans-serif" font-size="12">1, W/4, 256 ch</text></g>
+
+  <!-- BiLSTM -->
+  <g><rect x="190" y="580" width="300" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text x="340" y="598" text-anchor="middle" fill="#3C3489" font-family="sans-serif" font-size="14" font-weight="500">2× BiLSTM (256)</text>
+    <text x="340" y="616" text-anchor="middle" fill="#534AB7" font-family="sans-serif" font-size="12">sequence encoder</text></g>
+
+  <!-- Linear -->
+  <g><rect x="190" y="670" width="300" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+    <text x="340" y="688" text-anchor="middle" fill="#712B13" font-family="sans-serif" font-size="14" font-weight="500">Linear → 23</text>
+    <text x="340" y="706" text-anchor="middle" fill="#993C1D" font-family="sans-serif" font-size="12">character logits</text></g>
+
+  <!-- CTC Decoder -->
+  <g><rect x="190" y="760" width="300" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+    <text x="340" y="778" text-anchor="middle" fill="#712B13" font-family="sans-serif" font-size="14" font-weight="500">CTC decoder</text>
+    <text x="340" y="796" text-anchor="middle" fill="#993C1D" font-family="sans-serif" font-size="12">greedy decoding</text></g>
+
+  <!-- Output -->
+  <g><rect x="190" y="850" width="300" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+    <text x="340" y="868" text-anchor="middle" fill="#444441" font-family="sans-serif" font-size="14" font-weight="500">Результат</text>
+    <text x="340" y="886" text-anchor="middle" fill="#5F5E5A" font-family="sans-serif" font-size="12">A080AA163</text></g>
+</svg>
