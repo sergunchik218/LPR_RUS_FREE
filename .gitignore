@@ -3,7 +3,15 @@ __pycache__/
 *.pyc
 autoriaNumberplateOcrRu-2021-09-01/
 autoriaNumberplateOptionsDataset-2021-09-03/
+autoriaNumberplateDataset-2023-03-06/
+autoriaNumberplateDataset-2023-03-06.zip
 runs/
 detection_data/
+plate_detection_data/
 lpr_etokone/
 *_result.*
+yolo11n.pt
+yolo26n.pt
+yolov8n.pt
+plate_detect.pt
+*.zip
