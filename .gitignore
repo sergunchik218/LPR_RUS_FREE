@@ -10,7 +10,6 @@ detection_data/
 plate_detection_data/
 lpr_etokone/
 *_result.*
-yolo11n.pt
 yolo26n.pt
 yolov8n.pt
 plate_detect.pt
