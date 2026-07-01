@@ -57,7 +57,10 @@ class PlateRecognizer:
                         if px2 - px1 < 20 or py2 - py1 < 8:
                             continue
 
-                        plate_crop = car_crop[py1:py2, px1:px2]
+                        expand_x = int((px2 - px1) * 0.15)
+                        ocr_x1 = max(0, px1 - expand_x)
+                        ocr_x2 = min(car_crop.shape[1], px2 + expand_x)
+                        plate_crop = car_crop[py1:py2, ocr_x1:ocr_x2]
                         text, conf = self._recognize_plate(plate_crop)
                         if not text or conf < 0.75:
                             continue
